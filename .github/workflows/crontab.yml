@@ -28,10 +28,9 @@ jobs:
         run: |
           git config --global user.name 'MerlinKodo'
           git config --global user.email '150133030+MerlinKodo@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git tag ${{steps.tag.outputs.result}}
           git push origin ${{steps.tag.outputs.result}}
-          env:
-            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Download file
         env: 
